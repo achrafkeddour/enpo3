@@ -150,6 +150,8 @@
                     socket.emit('webrtc signal', { recipient: activeCallUser, signal: { 'ice': event.candidate } });
                 }
             };
+        
+            // Gestion pour les navigateurs utilisant onaddstream
             peerConnection.onaddstream = function(event) {
                 var remoteAudio = document.getElementById('remoteAudio');
                 if (!remoteAudio) {
@@ -160,7 +162,21 @@
                 }
                 remoteAudio.srcObject = event.stream;
             };
+        
+            // Gestion pour les navigateurs mobiles utilisant ontrack
+            peerConnection.ontrack = function(event) {
+                var remoteAudio = document.getElementById('remoteAudio');
+                if (!remoteAudio) {
+                    remoteAudio = document.createElement('audio');
+                    remoteAudio.id = 'remoteAudio';
+                    remoteAudio.autoplay = true;
+                    document.body.appendChild(remoteAudio);
+                }
+                // Certains navigateurs envoient event.streams (un tableau) pour ontrack
+                remoteAudio.srcObject = event.streams && event.streams[0] ? event.streams[0] : event.stream;
+            };
         }
+        
 
         function answerCall() {
             $('#callButtons').hide();
