@@ -1,0 +1,204 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f2f5;
+    font-family: 'Arial', sans-serif;
+}
+#app {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+#usernameInput {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+#userList, #conversationView {
+    height: 100%;
+    overflow-y: auto;
+    display: none;
+}
+#userList.active, #conversationView.active {
+    display: flex;
+}
+#userList {
+    width: 25%;
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+    flex-direction: column;
+    padding: 10px;
+}
+#conversationView {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #e5ddd5;
+}
+#conversationHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #075e54;
+    color: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+#messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    background: #d6d6d6;
+}
+#messages .message {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 60%;
+    word-wrap: break-word;
+    display: inline-block;
+    position: relative;
+}
+.message.sent {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+}
+.message.received {
+    background-color: #fff;
+    align-self: flex-start;
+}
+.message .timestamp {
+    font-size: 0.75em;
+    color: #888;
+    position: absolute;
+    bottom: -1.2em;
+    right: 10px;
+}
+#form {
+    display: flex;
+    padding: 10px;
+    background-color: #075e54;
+    border-top: 1px solid #ccc;
+}
+#form textarea {
+    flex: 1;
+    border-radius: 20px;
+    resize: none;
+    padding: 10px;
+    margin-right: 10px;
+}
+#form input[type="file"] {
+    display: none;
+}
+#form label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #128c7e;
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.btn-primary {
+    background-color: #128c7e;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+.online-status {
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+.user-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+.user-item:hover {
+    background-color: #f0f2f5;
+}
+#typingIndicator {
+    font-size: 0.85em;
+    color: #888;
+    margin-bottom: 5px;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.dark-mode {
+    background-color: #18191a;
+    color: #e4e6eb;
+}
+.dark-mode #form {
+    background-color: #242526;
+}
+.dark-mode #form textarea {
+    background-color: #3a3b3c;
+    color: #e4e6eb;
+}
+.dark-mode #form label {
+    background-color: #3a3b3c;
+}
+.dark-mode .message.sent {
+    background-color: #4a4a4a;
+}
+.dark-mode .message.received {
+    background-color: #3a3b3c;
+}
+.dark-mode #userList {
+    background-color: #242526;
+}
+.dark-mode #conversationHeader {
+    background-color: #242526;
+}
+.dark-mode .online-status {
+    background-color: #4a4a4a;
+}
+
+@media only screen and (max-width: 800px) {
+    #userList {
+        width: 100%;
+    }
+}
+
+
+
+        /* Additional styles for audio call modal */
+        #callModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        #callModal.active {
+            display: flex;
+        }
+        #callContainer {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            width: 300px;
+        }
