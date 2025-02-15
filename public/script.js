@@ -1,4 +1,4 @@
-    <script>
+
         // Chat variables and settings
         var socket = io();
         var currentRecipient = null;
@@ -298,4 +298,3 @@
                 hideCallModal();
             });
         });
-    </script>
